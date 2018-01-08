@@ -7,6 +7,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SnippingTool", "SnippingToo
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CroppingImageLibrary", "..\UI-Cropping-Image\UI-Cropping-Image-Library\CroppingImageLibrary\CroppingImageLibrary.csproj", "{AADA3516-FF2A-4C8D-AC3F-43C38ACB7BE4}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SnippingTool.UnitTest", "SnippingTool.UnitTest\SnippingTool.UnitTest.csproj", "{75D4D2D6-C164-41A6-AFDC-96DA57B8C02B}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +23,10 @@ Global
 		{AADA3516-FF2A-4C8D-AC3F-43C38ACB7BE4}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{AADA3516-FF2A-4C8D-AC3F-43C38ACB7BE4}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{AADA3516-FF2A-4C8D-AC3F-43C38ACB7BE4}.Release|Any CPU.Build.0 = Release|Any CPU
+		{75D4D2D6-C164-41A6-AFDC-96DA57B8C02B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{75D4D2D6-C164-41A6-AFDC-96DA57B8C02B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{75D4D2D6-C164-41A6-AFDC-96DA57B8C02B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{75D4D2D6-C164-41A6-AFDC-96DA57B8C02B}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
