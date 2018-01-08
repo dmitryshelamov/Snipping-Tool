@@ -15,6 +15,10 @@ namespace SnippingTool.Models
             _pathToConfigFile = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, ConfigFile);
         }
 
+        /// <summary>
+        /// Save current user settings to file
+        /// </summary>
+        /// <param name="userSettings"></param>
         public void Save(UserSettings userSettings)
         {
             using (FileStream fileStream = new FileStream(_pathToConfigFile, FileMode.Create))
@@ -24,6 +28,10 @@ namespace SnippingTool.Models
             }
         }
 
+        /// <summary>
+        /// Load user settings from file
+        /// </summary>
+        /// <returns></returns>
         public UserSettings Load()
         {
             UserSettings userSettings;
