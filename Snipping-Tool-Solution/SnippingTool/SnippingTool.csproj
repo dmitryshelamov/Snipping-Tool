@@ -70,6 +70,7 @@
   <ItemGroup>
     <Compile Include="Models\Interfaces\ISettingsManager.cs" />
     <Compile Include="Models\Interfaces\ISettingsRepository.cs" />
+    <Compile Include="Models\SettingsRepository.cs" />
     <Compile Include="Models\UserSettings.cs" />
     <Compile Include="Properties\AssemblyInfo.cs">
       <SubType>Code</SubType>
