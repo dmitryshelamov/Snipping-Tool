@@ -93,5 +93,11 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\UI-Cropping-Image\UI-Cropping-Image-Library\CroppingImageLibrary\CroppingImageLibrary.csproj">
+      <Project>{aada3516-ff2a-4c8d-ac3f-43c38acb7be4}</Project>
+      <Name>CroppingImageLibrary</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
