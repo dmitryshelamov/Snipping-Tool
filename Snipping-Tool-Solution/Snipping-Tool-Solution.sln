@@ -9,6 +9,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CroppingImageLibrary", "..\
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SnippingTool.UnitTest", "SnippingTool.UnitTest\SnippingTool.UnitTest.csproj", "{75D4D2D6-C164-41A6-AFDC-96DA57B8C02B}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SnippingTool.IntegrationTest", "SnippingTool.IntegrationTest\SnippingTool.IntegrationTest.csproj", "{C940742E-AC56-44C0-88B1-350D9FA2C55F}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -27,6 +29,10 @@ Global
 		{75D4D2D6-C164-41A6-AFDC-96DA57B8C02B}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{75D4D2D6-C164-41A6-AFDC-96DA57B8C02B}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{75D4D2D6-C164-41A6-AFDC-96DA57B8C02B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C940742E-AC56-44C0-88B1-350D9FA2C55F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C940742E-AC56-44C0-88B1-350D9FA2C55F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C940742E-AC56-44C0-88B1-350D9FA2C55F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C940742E-AC56-44C0-88B1-350D9FA2C55F}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
