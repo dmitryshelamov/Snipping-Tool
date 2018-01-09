@@ -7,13 +7,21 @@ namespace SnippingTool.Models
         private readonly ISettingsRepository _settingsRepository;
         private readonly ISettingsManagerHelper _settingsManagerHelper;
 
-        public UserSettings UserSettings { get; }
+        public UserSettings UserSettings { get; private set; }
 
         public SettingsManager(ISettingsRepository settingsRepository, ISettingsManagerHelper settingsManagerHelper)
         {
             _settingsManagerHelper = settingsManagerHelper;
             _settingsRepository = settingsRepository;
+
             UserSettings = new UserSettings();
+            LoadSettings();
+
+            if (IsUserSettingsValid() == false)
+            {
+                ResetSettings();
+                SaveSettings();
+            }
         }
 
         /// <summary>
@@ -44,8 +52,23 @@ namespace SnippingTool.Models
         /// </summary>
         public void ResetSettings()
         {
+            if (UserSettings == null)
+                UserSettings = new UserSettings();
             UserSettings.SaveDirectory = _settingsManagerHelper.GetDefaultSaveDirectory();
             UserSettings.ImageExtentions = "jpg";
+        }
+
+        /// <summary>
+        /// Check current user settings for null values
+        /// </summary>
+        /// <returns></returns>
+        private bool IsUserSettingsValid()
+        {
+            if (string.IsNullOrEmpty(UserSettings.SaveDirectory))
+                return false;
+            if (string.IsNullOrEmpty(UserSettings.ImageExtentions))
+                return false;
+            return true;
         }
     }
 }
