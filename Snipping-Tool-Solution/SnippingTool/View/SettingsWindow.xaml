@@ -8,16 +8,18 @@
         xmlns:sys="clr-namespace:System;assembly=mscorlib"
         xmlns:settings="clr-namespace:SnippingTool.Models"
         xmlns:settings1="clr-namespace:SnippingTool.Models.Settings"
+        xmlns:converters="clr-namespace:SnippingTool.View.Converters"
         mc:Ignorable="d"
         ResizeMode="NoResize"
         Width="320"
-        Height="200"
+        Height="320"
         WindowStartupLocation="CenterOwner">
     <Window.DataContext>
         <viewModels:SettingsWindowViewModel/>
     </Window.DataContext>
 
     <Window.Resources>
+        <converters:HotKeyConverter x:Key="HotKeyConverter" />
         <ObjectDataProvider x:Key="DataFromEnum" MethodName="GetValues" ObjectType="{x:Type sys:Enum}">
             <ObjectDataProvider.MethodParameters>
                 <x:Type TypeName="settings1:ImageExtensions"/>
@@ -46,6 +48,62 @@
                   Width="100"
                   ItemsSource="{Binding Source={StaticResource DataFromEnum}}"
                   SelectedItem ="{Binding Path=UserSettings.ImageExtension}"/>
+
+        <Label Content="Take Whole Screen HotKey"
+               Margin="10, 5, 10, 0"
+               HorizontalAlignment="Stretch"
+               VerticalAlignment="Top"/>
+        <StackPanel Orientation="Horizontal" Margin="10,0,10,0">
+            <ComboBox  Width="80"
+                      Margin="0,0,10,0"
+                      ItemsSource="{Binding TakeWholeScreenHotKey.ModifierKeyses1}"
+                      SelectedItem ="{Binding TakeWholeScreenHotKey.Mod1}"/>
+            <ComboBox Width="80"
+                      Margin="0,0,10,0"
+                      ItemsSource="{Binding TakeWholeScreenHotKey.ModifierKeyses2}"
+                      SelectedItem ="{Binding TakeWholeScreenHotKey.Mod2}"/>
+            <TextBox Name="TakeWholeScreenHotKey"
+                     Margin="0,0,10,0"
+                     MinWidth="80"
+                     HorizontalAlignment="Stretch"
+                     Height="23"
+                     TextWrapping="Wrap"
+                     Text="{Binding TakeWholeScreenHotKey.Key,
+                Converter={StaticResource HotKeyConverter},
+                        Mode=TwoWay}"
+                     PreviewKeyUp="TakeWholeScreenHotKeyTextBox_PreviewKeyUp"
+                     IsReadOnly="True"
+                     VerticalAlignment="Top"/>
+        </StackPanel>
+
+        <Label Content="Take Screen And Crop"
+               Margin="10, 5, 10, 0"
+               HorizontalAlignment="Left"
+               VerticalAlignment="Top"/>
+        <StackPanel Orientation="Horizontal"
+                    Margin="10,0,10,0">
+            <ComboBox Width="80"
+                      Margin="0,0,10,0"
+                      ItemsSource="{Binding TakeAndCropScreenHotKey.ModifierKeyses1}"
+                      SelectedItem ="{Binding TakeAndCropScreenHotKey.Mod1}"/>
+            <ComboBox Width="80"
+                      Margin="0,0,10,0"
+                      ItemsSource="{Binding TakeAndCropScreenHotKey.ModifierKeyses2}"
+                      SelectedItem ="{Binding TakeAndCropScreenHotKey.Mod2}"/>
+
+            <TextBox Name="TakeAndCropScreenHotKey" 
+                     Margin="0,0,10,0"
+                     MinWidth="80"
+                     HorizontalAlignment="Stretch"
+                     Height="25"
+                     TextWrapping="Wrap"
+                     Text="{Binding TakeAndCropScreenHotKey.Key,
+                        Converter={StaticResource HotKeyConverter},
+                        Mode=TwoWay}"
+                     PreviewKeyUp="TakeAndCropScreenHotKeyTextBox_PreviewKeyUp"
+                     VerticalAlignment="Top"
+                     IsReadOnly="True"/>
+        </StackPanel>
 
         <StackPanel Orientation="Horizontal" Margin="0, 30, 0, 0" VerticalAlignment="Stretch" HorizontalAlignment="Stretch" Width="300">
 

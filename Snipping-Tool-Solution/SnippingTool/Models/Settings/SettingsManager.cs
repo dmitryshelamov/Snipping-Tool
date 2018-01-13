@@ -26,7 +26,9 @@ namespace SnippingTool.Models.Settings
             var settingsToSave = new UserSettings()
             {
                 SaveDirectory = UserSettings.SaveDirectory,
-                ImageExtension = UserSettings.ImageExtension
+                ImageExtension = UserSettings.ImageExtension,
+                TakeWholeScreenHotKey = UserSettings.TakeWholeScreenHotKey,
+                TakeAndCropScreenHotKey = UserSettings.TakeAndCropScreenHotKey
             };
             _settingsRepository.Save(settingsToSave);
         }
@@ -46,6 +48,8 @@ namespace SnippingTool.Models.Settings
             {
                 UserSettings.SaveDirectory = settingsFromRepo.SaveDirectory;
                 UserSettings.ImageExtension = settingsFromRepo.ImageExtension;
+                UserSettings.TakeWholeScreenHotKey = settingsFromRepo.TakeWholeScreenHotKey;
+                UserSettings.TakeAndCropScreenHotKey = settingsFromRepo.TakeAndCropScreenHotKey;
             }
         }
 
@@ -56,6 +60,8 @@ namespace SnippingTool.Models.Settings
         {
             UserSettings.SaveDirectory = _settingsManagerHelper.GetDefaultSaveDirectory();
             UserSettings.ImageExtension = _settingsManagerHelper.GetDefaultFileExtension();
+            UserSettings.TakeWholeScreenHotKey = _settingsManagerHelper.GetDefaultTakeWholeScreenHotKey();
+            UserSettings.TakeAndCropScreenHotKey = _settingsManagerHelper.GetDefaultTakeAndCropScreenHotKey();
         }
     }
 }

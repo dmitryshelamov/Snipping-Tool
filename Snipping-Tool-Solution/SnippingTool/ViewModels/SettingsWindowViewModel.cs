@@ -19,9 +19,14 @@ namespace SnippingTool.ViewModels
         private readonly ISettingsManager _settingsManager;
         private readonly ISettingsManagerHelper _settingsManagerHelper;
 
+        public HotKeyHelper TakeWholeScreenHotKey { get; set; }
+        public HotKeyHelper TakeAndCropScreenHotKey { get; set; }
+
 
         public SettingsWindowViewModel(ISettingsManager settingsManager, ISettingsManagerHelper settingsManagerHelper)
         {
+            TakeWholeScreenHotKey = new HotKeyHelper();
+            TakeAndCropScreenHotKey = new HotKeyHelper();
             UserSettings = new UserSettings();
             _settingsManager = settingsManager;
             _settingsManagerHelper = settingsManagerHelper;
@@ -54,6 +59,15 @@ namespace SnippingTool.ViewModels
                 {
                     _settingsManager.UserSettings.SaveDirectory = UserSettings.SaveDirectory;
                     _settingsManager.UserSettings.ImageExtension = UserSettings.ImageExtension;
+
+                    _settingsManager.UserSettings.TakeWholeScreenHotKey.Key = TakeWholeScreenHotKey.Key;
+                    _settingsManager.UserSettings.TakeWholeScreenHotKey.Mod1 = TakeWholeScreenHotKey.Mod1;
+                    _settingsManager.UserSettings.TakeWholeScreenHotKey.Mod2 = TakeWholeScreenHotKey.Mod2;
+
+                    _settingsManager.UserSettings.TakeAndCropScreenHotKey.Key = TakeAndCropScreenHotKey.Key;
+                    _settingsManager.UserSettings.TakeAndCropScreenHotKey.Mod1 = TakeAndCropScreenHotKey.Mod1;
+                    _settingsManager.UserSettings.TakeAndCropScreenHotKey.Mod2 = TakeAndCropScreenHotKey.Mod2;
+
                     _settingsManager.SaveSettings();
                 }));
             }
@@ -67,6 +81,14 @@ namespace SnippingTool.ViewModels
                 {
                     UserSettings.SaveDirectory = _settingsManagerHelper.GetDefaultSaveDirectory();
                     UserSettings.ImageExtension = _settingsManagerHelper.GetDefaultFileExtension();
+
+                    TakeWholeScreenHotKey.Key = _settingsManagerHelper.GetDefaultTakeWholeScreenHotKey().Key;
+                    TakeWholeScreenHotKey.Mod1 = _settingsManagerHelper.GetDefaultTakeWholeScreenHotKey().Mod1;
+                    TakeWholeScreenHotKey.Mod2 = _settingsManagerHelper.GetDefaultTakeWholeScreenHotKey().Mod2;
+
+                    TakeAndCropScreenHotKey.Key = _settingsManagerHelper.GetDefaultTakeAndCropScreenHotKey().Key;
+                    TakeAndCropScreenHotKey.Mod1 = _settingsManagerHelper.GetDefaultTakeAndCropScreenHotKey().Mod1;
+                    TakeAndCropScreenHotKey.Mod2 = _settingsManagerHelper.GetDefaultTakeAndCropScreenHotKey().Mod2;
                 }));
             }
         }
@@ -75,6 +97,14 @@ namespace SnippingTool.ViewModels
         {
             UserSettings.SaveDirectory = _settingsManager.UserSettings.SaveDirectory;
             UserSettings.ImageExtension = _settingsManager.UserSettings.ImageExtension;
+
+            TakeWholeScreenHotKey.Key = _settingsManager.UserSettings.TakeWholeScreenHotKey.Key;
+            TakeWholeScreenHotKey.Mod1 = _settingsManager.UserSettings.TakeWholeScreenHotKey.Mod1;
+            TakeWholeScreenHotKey.Mod2 = _settingsManager.UserSettings.TakeWholeScreenHotKey.Mod2;
+
+            TakeAndCropScreenHotKey.Key = _settingsManager.UserSettings.TakeAndCropScreenHotKey.Key;
+            TakeAndCropScreenHotKey.Mod1 = _settingsManager.UserSettings.TakeAndCropScreenHotKey.Mod1;
+            TakeAndCropScreenHotKey.Mod2 = _settingsManager.UserSettings.TakeAndCropScreenHotKey.Mod2;
         }
     }
 }

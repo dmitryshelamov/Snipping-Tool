@@ -71,6 +71,9 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Models\KeyboardHook\GlobalKeyboardHook.cs" />
+    <Compile Include="Models\KeyboardHook\HotKey.cs" />
+    <Compile Include="Models\KeyboardHook\HotKeyManager.cs" />
     <Compile Include="Models\Screenshots\Interfaces\IScreenshot.cs" />
     <Compile Include="Models\Screenshots\Interfaces\IScreenshotHelper.cs" />
     <Compile Include="Models\Screenshots\Screenshot.cs" />
@@ -78,10 +81,12 @@
     <Compile Include="Models\Screenshots\ScreenshotHelper.cs" />
     <Compile Include="Models\Settings\ImageExtensions.cs" />
     <Compile Include="Properties\Annotations.cs" />
+    <Compile Include="ViewModels\HotKeyHelper.cs" />
     <Compile Include="ViewModels\MainWindowViewModel.cs" />
     <Compile Include="ViewModels\ScreenshotWindowViewModel.cs" />
     <Compile Include="ViewModels\SettingsWindowViewModel.cs" />
     <Compile Include="ViewModels\ToolTipCategory.cs" />
+    <Compile Include="View\Converters\HotKeyConverter.cs" />
     <Compile Include="View\ScreenshotWindow.xaml.cs">
       <DependentUpon>ScreenshotWindow.xaml</DependentUpon>
     </Compile>
