@@ -15,7 +15,9 @@ namespace SnippingTool.UnitTest.ViewModels
             //  arrange 
             bool eventFired = false;
             ISettingsManager settingsManager = Substitute.For<ISettingsManager>();
-            SettingsWindowViewModel viewModel = new SettingsWindowViewModel(settingsManager);
+            settingsManager.UserSettings.Returns(new UserSettings());
+            ISettingsManagerHelper settingsManagerHelper = Substitute.For<ISettingsManagerHelper>();
+            SettingsWindowViewModel viewModel = new SettingsWindowViewModel(settingsManager, settingsManagerHelper);
             viewModel.CloseSettingsWindowEvent += (sender, args) => eventFired = true;
             //  act
             viewModel.CloseSettingsWindowCommand.Execute(null);
@@ -29,12 +31,13 @@ namespace SnippingTool.UnitTest.ViewModels
             //  arrange
             var expectedDir = "ExpectedDir";
             var settingsManager = Substitute.For<ISettingsManager>();
+            ISettingsManagerHelper settingsManagerHelper = Substitute.For<ISettingsManagerHelper>();
             settingsManager.UserSettings.Returns(new UserSettings()
             {
                 SaveDirectory = expectedDir,
                 ImageExtension = ImageExtensions.Jpg
             });
-            SettingsWindowViewModel viewModel = new SettingsWindowViewModel(settingsManager);
+            SettingsWindowViewModel viewModel = new SettingsWindowViewModel(settingsManager, settingsManagerHelper);
             //  act
             viewModel.SaveSettingsCommand.Execute(null);
             //  assert

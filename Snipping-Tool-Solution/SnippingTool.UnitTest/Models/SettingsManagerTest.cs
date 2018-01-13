@@ -79,23 +79,5 @@ namespace SnippingTool.UnitTest.Models
             //  assert
             settingsRepository.Received().Save(Arg.Is<UserSettings>(x => x.SaveDirectory == saveDir && x.ImageExtension == imgExt));
         }
-
-        [Test]
-        public void ResetSettings_ValidCall_UserSettingsResetToDefault()
-        {
-            //  arrange
-            var saveDir = "TestSaveDirectory";
-            var imgExt = ImageExtensions.Jpg;
-            var settingsRepository = Substitute.For<ISettingsRepository>();
-            var settingsHelper = Substitute.For<ISettingsManagerHelper>();
-            settingsHelper.GetDefaultSaveDirectory().Returns(saveDir);
-            settingsHelper.GetDefaultFileExtension().Returns(imgExt);
-            ISettingsManager settingsManager = new SettingsManager(settingsRepository, settingsHelper);
-            //  act
-            settingsManager.ResetSettings();
-            //  assert
-            Assert.AreEqual(saveDir, settingsManager.UserSettings.SaveDirectory);
-            Assert.AreEqual(imgExt, settingsManager.UserSettings.ImageExtension);
-        }
     }
 }

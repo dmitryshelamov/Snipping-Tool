@@ -52,7 +52,7 @@ namespace SnippingTool.Models
         /// <summary>
         /// Reset current user settings to default
         /// </summary>
-        public void ResetSettings()
+        private void ResetSettings()
         {
             UserSettings.SaveDirectory = _settingsManagerHelper.GetDefaultSaveDirectory();
             UserSettings.ImageExtension = _settingsManagerHelper.GetDefaultFileExtension();

@@ -5,6 +5,5 @@
         UserSettings UserSettings { get; }
         void SaveSettings();
         void LoadSettings();
-        void ResetSettings();
     }
 }
