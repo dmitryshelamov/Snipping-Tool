@@ -12,10 +12,13 @@ namespace SnippingTool.ViewModels
     {
         private RelayCommand _openSettingsWindowCommand;
         private RelayCommand _takeScreenshotCommand;
+        private RelayCommand _openScreenshotWindowCommand;
 
         public event EventHandler OpenSettingsEvent;
+        public event EventHandler OpenScreenshotWindowEvent;
 
         private readonly ISettingsManager _settingsManager;
+
 
         public MainWindowViewModel(ISettingsManager settingsManager)
         {
@@ -48,6 +51,17 @@ namespace SnippingTool.ViewModels
                     IScreenshot screenshot = new Screenshot(_settingsManager.UserSettings, new ScreenshotHelper());
                     screenshot.TakeScreenshot();
                     screenshot.SaveScreenshot();
+                }));
+            }
+        }
+
+        public RelayCommand OpenScreenshotWindowCommand
+        {
+            get
+            {
+                return _openScreenshotWindowCommand ?? (_openScreenshotWindowCommand = new RelayCommand(() =>
+                {
+                    OpenScreenshotWindowEvent?.Invoke(this, EventArgs.Empty);
                 }));
             }
         }

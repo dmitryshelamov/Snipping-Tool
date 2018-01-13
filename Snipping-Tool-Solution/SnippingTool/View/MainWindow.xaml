@@ -12,7 +12,9 @@
     </Window.DataContext>
     
     <Grid>
-        <Button Content="Settings" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Width="110" Command="{Binding OpenSettingsWindowCommand}"/>
-        <Button Content="Take Screenshot" HorizontalAlignment="Left" Margin="10,37,0,0" VerticalAlignment="Top" Width="110" Command="{Binding TakeScreenshotCommand}" />
+        <Button Content="Settings" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Width="150" Command="{Binding OpenSettingsWindowCommand}"/>
+        <Button Content="Take Screenshot" HorizontalAlignment="Left" Margin="10,37,0,0" VerticalAlignment="Top" Width="150" Command="{Binding TakeScreenshotCommand}" />
+        <Button Content="Take Screenshot And Crop" HorizontalAlignment="Left" Margin="10,64,0,0" VerticalAlignment="Top" Width="150" Command="{Binding OpenScreenshotWindowCommand}"
+        />
     </Grid>
 </Window>

@@ -1,0 +1,22 @@
+﻿<Window x:Class="SnippingTool.View.ScreenshotWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:SnippingTool.View"
+        xmlns:viewModels="clr-namespace:SnippingTool.ViewModels"
+        mc:Ignorable="d"
+        Title="ScreenshotWindow" Height="300" Width="300" Loaded="Window_Loaded">
+    <Window.DataContext>
+        <viewModels:ScreenshotWindowViewModel/>
+    </Window.DataContext>
+    <Grid x:Name="RootGrid" MouseLeftButtonDown="RootGrid_MouseLeftButtonDown">
+        <Canvas x:Name="CanvasPanel">
+            <Border Height="{Binding ElementName=CanvasPanel, Path=ActualHeight}" Width="{Binding ElementName=CanvasPanel, Path=ActualWidth}" Background="LightBlue">
+                <Image x:Name = "SourceImage"
+                       Source="{Binding ScreenImageSource}"
+                       Stretch="Fill"/>
+            </Border>
+        </Canvas>
+    </Grid>
+</Window>

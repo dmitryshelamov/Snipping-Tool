@@ -74,11 +74,16 @@
     <Compile Include="Models\Screenshots\Interfaces\IScreenshot.cs" />
     <Compile Include="Models\Screenshots\Interfaces\IScreenshotHelper.cs" />
     <Compile Include="Models\Screenshots\Screenshot.cs" />
+    <Compile Include="Models\Screenshots\ScreenshotCropped.cs" />
     <Compile Include="Models\Screenshots\ScreenshotHelper.cs" />
     <Compile Include="Models\Settings\ImageExtensions.cs" />
     <Compile Include="Properties\Annotations.cs" />
     <Compile Include="ViewModels\MainWindowViewModel.cs" />
+    <Compile Include="ViewModels\ScreenshotWindowViewModel.cs" />
     <Compile Include="ViewModels\SettingsWindowViewModel.cs" />
+    <Compile Include="View\ScreenshotWindow.xaml.cs">
+      <DependentUpon>ScreenshotWindow.xaml</DependentUpon>
+    </Compile>
     <Compile Include="View\SettingsWindow.xaml.cs">
       <DependentUpon>SettingsWindow.xaml</DependentUpon>
     </Compile>
@@ -96,6 +101,10 @@
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Page Include="View\ScreenshotWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="View\SettingsWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
