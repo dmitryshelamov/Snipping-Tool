@@ -89,6 +89,7 @@ namespace SnippingTool.UnitTest.Models
             var settingsRepository = Substitute.For<ISettingsRepository>();
             var settingsHelper = Substitute.For<ISettingsManagerHelper>();
             settingsHelper.GetDefaultSaveDirectory().Returns(saveDir);
+            settingsHelper.GetDefaultFileExtension().Returns(imgExt);
             ISettingsManager settingsManager = new SettingsManager(settingsRepository, settingsHelper);
             //  act
             settingsManager.ResetSettings();

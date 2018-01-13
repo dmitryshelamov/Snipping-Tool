@@ -1,4 +1,5 @@
-﻿using System.IO;
+﻿using System;
+using System.IO;
 using System.Xml.Serialization;
 using SnippingTool.Models.Interfaces;
 
@@ -19,7 +20,8 @@ namespace SnippingTool.Models
         /// <param name="userSettings"></param>
         public void Save(UserSettings userSettings)
         {
-            using (FileStream fileStream = new FileStream(_configSettings.ConfigPath, FileMode.Create))
+            string pathToConfigFile = Path.Combine(_configSettings.ConfigPath, _configSettings.XmlName);
+            using (FileStream fileStream = new FileStream(pathToConfigFile, FileMode.Create))
             {
                 XmlSerializer serializer = new XmlSerializer(typeof(UserSettings));
                 serializer.Serialize(fileStream, userSettings);
