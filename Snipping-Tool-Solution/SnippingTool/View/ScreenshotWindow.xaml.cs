@@ -20,6 +20,8 @@ namespace SnippingTool.View
 
             _viewModel = DataContext as ScreenshotWindowViewModel;
 
+            _viewModel.CloseSettingsEvent += (sender, args) => Close();
+
             Left = SystemParameters.VirtualScreenLeft;
             Top = SystemParameters.VirtualScreenTop;
             Width = SystemParameters.VirtualScreenWidth;

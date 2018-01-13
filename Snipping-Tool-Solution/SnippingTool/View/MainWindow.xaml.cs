@@ -1,4 +1,5 @@
 ﻿using System.Windows;
+using System.Windows.Controls;
 using SnippingTool.ViewModels;
 
 namespace SnippingTool.View
@@ -24,7 +25,6 @@ namespace SnippingTool.View
                 settingsWindow.ShowDialog();
             };
 
-
             _viewModel.OpenScreenshotWindowEvent += (sender, args) =>
             {
                 if (_screenshotWindow == null)
@@ -34,7 +34,25 @@ namespace SnippingTool.View
                     _screenshotWindow.Show();
                 }
             };
+        }
 
+        //  logic for updating tooltips
+        private void Button_MouseEnter(object sender, System.Windows.Input.MouseEventArgs e)
+        {
+            var button = sender as Button;
+
+            if (button.Name == SettingsButton.Name)
+                _viewModel.UpdateToolTip(ToolTipCategory.Settings);
+            if (button.Name == TakeAndCropButton.Name)
+                _viewModel.UpdateToolTip(ToolTipCategory.TakeAndCrop);
+            if (button.Name == TakeWholeScreenButton.Name)
+                _viewModel.UpdateToolTip(ToolTipCategory.TakeWholeScreen);
+        }
+
+        //  logic for updating tooltips
+        private void Button_MouseLeave(object sender, System.Windows.Input.MouseEventArgs e)
+        {
+            _viewModel.UpdateToolTip(ToolTipCategory.Common);
         }
     }
 }

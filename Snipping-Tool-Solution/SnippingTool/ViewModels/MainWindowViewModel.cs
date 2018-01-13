@@ -18,6 +18,17 @@ namespace SnippingTool.ViewModels
         public event EventHandler OpenScreenshotWindowEvent;
 
         private readonly ISettingsManager _settingsManager;
+        private string _toolTip;
+
+        public string ToolTip
+        {
+            get { return _toolTip; }
+            set
+            {
+                _toolTip = value;
+                RaisePropertyChanged();
+            }
+        }
 
 
         public MainWindowViewModel(ISettingsManager settingsManager)
@@ -63,6 +74,25 @@ namespace SnippingTool.ViewModels
                 {
                     OpenScreenshotWindowEvent?.Invoke(this, EventArgs.Empty);
                 }));
+            }
+        }
+
+        public void UpdateToolTip(ToolTipCategory toolTip)
+        {
+            switch (toolTip)
+            {
+                case ToolTipCategory.Common:
+                    ToolTip = "A simple program for taking screenshot and crop on the fly.";
+                    break;
+                case ToolTipCategory.Settings:
+                    ToolTip = "User settings. You can choose, where to save, which format.";
+                    break;
+                case ToolTipCategory.TakeWholeScreen:
+                    ToolTip = "Take a screenshot of whole screen and save to directory and prefered format. You can change it in settings window.";
+                    break;
+                case ToolTipCategory.TakeAndCrop:
+                    ToolTip = "Take a screenshot of whole screen and give you abiliy to crop it. Double click inside cropped area will save cropped screenshot. Press 'Escape' button to cancel.";
+                    break;
             }
         }
 

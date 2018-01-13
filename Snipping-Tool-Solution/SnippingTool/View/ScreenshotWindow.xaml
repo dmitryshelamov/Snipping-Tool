@@ -10,6 +10,12 @@
     <Window.DataContext>
         <viewModels:ScreenshotWindowViewModel/>
     </Window.DataContext>
+
+    <Window.InputBindings>
+        <KeyBinding Key="Escape"
+                    Command="{Binding CloseSettingsWindowCommand}" />
+    </Window.InputBindings>
+
     <Grid x:Name="RootGrid" MouseLeftButtonDown="RootGrid_MouseLeftButtonDown">
         <Canvas x:Name="CanvasPanel">
             <Border Height="{Binding ElementName=CanvasPanel, Path=ActualHeight}" Width="{Binding ElementName=CanvasPanel, Path=ActualWidth}" Background="LightBlue">

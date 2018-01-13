@@ -6,15 +6,51 @@
         xmlns:local="clr-namespace:SnippingTool"
         xmlns:viewModels="clr-namespace:SnippingTool.ViewModels"
         mc:Ignorable="d"
-        Title="Main" Height="350" Width="525">
+        Title="Snipping Tool"
+        SizeToContent="WidthAndHeight"
+        ResizeMode="CanMinimize"
+        WindowStartupLocation="CenterScreen">
     <Window.DataContext>
         <viewModels:MainWindowViewModel/>
     </Window.DataContext>
-    
-    <Grid>
-        <Button Content="Settings" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Width="150" Command="{Binding OpenSettingsWindowCommand}"/>
-        <Button Content="Take Screenshot" HorizontalAlignment="Left" Margin="10,37,0,0" VerticalAlignment="Top" Width="150" Command="{Binding TakeScreenshotCommand}" />
-        <Button Content="Take Screenshot And Crop" HorizontalAlignment="Left" Margin="10,64,0,0" VerticalAlignment="Top" Width="150" Command="{Binding OpenScreenshotWindowCommand}"
-        />
-    </Grid>
+
+    <StackPanel Orientation="Vertical" Width="310" Height="90">
+        <StackPanel Orientation="Horizontal"  Margin="1, 1, 1, 1">
+            <Button Name="TakeWholeScreenButton"
+                    Content="Take Whole Screen"
+                    HorizontalAlignment="Left"
+                    Margin="0,0,0,0"
+                    VerticalAlignment="Top"
+                    MinHeight="30"
+                    MinWidth="100" 
+                    Command="{Binding TakeScreenshotCommand}" 
+                    MouseEnter="Button_MouseEnter" 
+                    MouseLeave="Button_MouseLeave"/>
+            <Button Name="TakeAndCropButton"
+                    Content="Take And Crop"
+                    HorizontalAlignment="Left"
+                    Margin="0,0,0,0"
+                    VerticalAlignment="Top"
+                    MinHeight="30"
+                    MinWidth="100" 
+                    Command="{Binding OpenScreenshotWindowCommand}"
+                    MouseEnter="Button_MouseEnter"
+                    MouseLeave="Button_MouseLeave"/>
+            <Button Name="SettingsButton"
+                    Content="Settings"
+                    HorizontalAlignment="Left"
+                    Margin="0,0,0,0"
+                    VerticalAlignment="Top" 
+                    MinHeight="30"
+                    MinWidth="100" 
+                    Command="{Binding OpenSettingsWindowCommand}"
+                    MouseEnter="Button_MouseEnter"
+                    MouseLeave="Button_MouseLeave"/>
+        </StackPanel>
+        <TextBlock Name="ToolTipTextBlock"
+                   Margin="2,2,2,2"
+                   TextWrapping="Wrap"
+                   Text="{Binding ToolTip}"/>
+    </StackPanel>
 </Window>
+

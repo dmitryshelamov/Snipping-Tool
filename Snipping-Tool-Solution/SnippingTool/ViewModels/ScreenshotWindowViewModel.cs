@@ -1,4 +1,5 @@
-﻿using System.Windows;
+﻿using System;
+using System.Windows;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using GalaSoft.MvvmLight;
@@ -15,9 +16,11 @@ namespace SnippingTool.ViewModels
 
         private RelayCommand<BitmapFrame> _saveScreenshot;
 
+        public event EventHandler CloseSettingsEvent;
 
         private readonly ISettingsManager _settingsManager;
         private readonly IScreenshotHelper _screenshotHelper;
+        private RelayCommand _closeSettingsWindowCommand;
 
         public ScreenshotWindowViewModel(ISettingsManager settingsManager, IScreenshotHelper screenshotHelper)
         {
@@ -43,6 +46,17 @@ namespace SnippingTool.ViewModels
                     ScreenshotCropped screenshot = new ScreenshotCropped(_settingsManager.UserSettings, new ScreenshotHelper(), bitmapFrame);
                     screenshot.TakeScreenshot();
                     screenshot.SaveScreenshot();
+                }));
+            }
+        }
+
+        public RelayCommand CloseSettingsWindowCommand
+        {
+            get
+            {
+                return _closeSettingsWindowCommand ?? (_closeSettingsWindowCommand = new RelayCommand(() =>
+                {
+                    CloseSettingsEvent?.Invoke(this, EventArgs.Empty);
                 }));
             }
         }
