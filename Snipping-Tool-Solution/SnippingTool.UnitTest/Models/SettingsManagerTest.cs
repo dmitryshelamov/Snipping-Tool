@@ -81,7 +81,7 @@ namespace SnippingTool.UnitTest.Models
         }
 
         [Test]
-        public void ResetSettings_CallMethod_UserSettingsResetToDefault()
+        public void ResetSettings_ValidCall_UserSettingsResetToDefault()
         {
             //  arrange
             var saveDir = "TestSaveDirectory";

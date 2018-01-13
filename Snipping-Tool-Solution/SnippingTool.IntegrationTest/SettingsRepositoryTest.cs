@@ -50,11 +50,11 @@ namespace SnippingTool.IntegrationTest
             var path = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, configSettings.XmlName);
             configSettings.ConfigPath.Returns(path);
             var expectedSaveDirectory = "ExpectedSaveDirectory";
-            var expectedImageExtentions = "ExpectedImageExtentions";
+            var expectedImageExtentions = ImageExtensions.Jpg;
             var xml = "<?xml version=\"1.0\"?>" +
                        "<UserSettings xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\" xmlns:xsd=\"http://www.w3.org/2001/MLSchema\">" +
                        "<SaveDirectory>" + expectedSaveDirectory + "</SaveDirectory>" +
-                       "<ImageExtentions>" + expectedImageExtentions + "</ImageExtentions>" +
+                       "<ImageExtension>" + expectedImageExtentions + "</ImageExtension>" +
                        "</UserSettings>";
             File.WriteAllText(configSettings.ConfigPath, xml);
             //  act

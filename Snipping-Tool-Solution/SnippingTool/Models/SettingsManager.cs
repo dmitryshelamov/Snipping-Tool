@@ -47,7 +47,6 @@ namespace SnippingTool.Models
                 UserSettings.SaveDirectory = settingsFromRepo.SaveDirectory;
                 UserSettings.ImageExtension = settingsFromRepo.ImageExtension;
             }
-
         }
 
         /// <summary>
@@ -55,8 +54,6 @@ namespace SnippingTool.Models
         /// </summary>
         public void ResetSettings()
         {
-            if (UserSettings == null)
-                UserSettings = new UserSettings();
             UserSettings.SaveDirectory = _settingsManagerHelper.GetDefaultSaveDirectory();
             UserSettings.ImageExtension = _settingsManagerHelper.GetDefaultFileExtension();
         }
