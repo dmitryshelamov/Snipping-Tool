@@ -74,6 +74,7 @@
     <Compile Include="Models\SettingsManagerTest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ViewModels\MainWindowViewModelTest.cs" />
+    <Compile Include="ViewModels\SettingsWindowViewModelTest.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

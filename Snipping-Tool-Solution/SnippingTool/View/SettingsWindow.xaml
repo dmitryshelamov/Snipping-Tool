@@ -10,7 +10,7 @@
         mc:Ignorable="d"
         ResizeMode="NoResize"
         Width="320"
-        Height="320"
+        Height="200"
         WindowStartupLocation="CenterOwner">
     <Window.DataContext>
         <viewModels:SettingsWindowViewModel/>
@@ -45,5 +45,25 @@
                   Width="100"
                   ItemsSource="{Binding Source={StaticResource DataFromEnum}}"
                   SelectedItem ="{Binding Path=UserSettings.ImageExtension}"/>
+
+        <StackPanel Orientation="Horizontal" Margin="0, 30, 0, 0" VerticalAlignment="Stretch" HorizontalAlignment="Stretch" Width="300">
+
+            <Button Content="Save"
+                    MinHeight="30"
+                    MinWidth="100"
+                    HorizontalAlignment="Stretch"
+                    VerticalAlignment="Top" />
+            <Button Content="Reset"
+                    MinHeight="30"
+                    MinWidth="100"
+                    HorizontalAlignment="Stretch"
+                    VerticalAlignment="Top" />
+            <Button Content="Close"
+                    MinHeight="30"
+                    MinWidth="100"
+                    HorizontalAlignment="Stretch"
+                    VerticalAlignment="Top"
+                    Command="{Binding CloseSettingsWindowCommand}"/>
+        </StackPanel>
     </StackPanel>
 </Window>
