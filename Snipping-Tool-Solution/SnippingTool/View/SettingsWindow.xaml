@@ -4,9 +4,46 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:SnippingTool"
+        xmlns:viewModels="clr-namespace:SnippingTool.ViewModels"
+        xmlns:sys="clr-namespace:System;assembly=mscorlib"
+        xmlns:settings="clr-namespace:SnippingTool.Models"
         mc:Ignorable="d"
-        Title="Settings" Height="350" Width="525">
-    <Grid>
-        
-    </Grid>
+        ResizeMode="NoResize"
+        Width="320"
+        Height="320"
+        WindowStartupLocation="CenterOwner">
+    <Window.DataContext>
+        <viewModels:SettingsWindowViewModel/>
+    </Window.DataContext>
+
+    <Window.Resources>
+        <ObjectDataProvider x:Key="DataFromEnum" MethodName="GetValues" ObjectType="{x:Type sys:Enum}">
+            <ObjectDataProvider.MethodParameters>
+                <x:Type TypeName="settings:ImageExtensions"/>
+            </ObjectDataProvider.MethodParameters>
+        </ObjectDataProvider>
+    </Window.Resources>
+
+    <StackPanel>
+        <Label Content="Save Directory:"
+               Margin="10, 5, 10, 0"
+               HorizontalAlignment="Stretch"
+               VerticalAlignment="Top"/>
+        <TextBox HorizontalAlignment="Stretch"
+                 Margin="10, 0, 10, 0"
+                 Height="25"
+                 TextWrapping="Wrap"
+                 Text="{Binding UserSettings.SaveDirectory}"
+                 VerticalAlignment="Top"/>
+        <Label Content="Image Format:"
+               Margin="10, 5, 10, 0"
+               HorizontalAlignment="Stretch"
+               VerticalAlignment="Top"/>
+        <ComboBox HorizontalAlignment="Left"
+                  Margin="10, 0, 10, 0"
+                  VerticalAlignment="Top"
+                  Width="100"
+                  ItemsSource="{Binding Source={StaticResource DataFromEnum}}"
+                  SelectedItem ="{Binding Path=UserSettings.ImageExtension}"/>
+    </StackPanel>
 </Window>

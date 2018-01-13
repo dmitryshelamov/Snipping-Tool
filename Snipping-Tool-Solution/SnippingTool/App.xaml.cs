@@ -1,10 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Configuration;
-using System.Data;
-using System.Linq;
-using System.Threading.Tasks;
-using System.Windows;
+﻿using System.Windows;
+using SnippingTool.Models;
+using SnippingTool.Models.Interfaces;
 
 namespace SnippingTool
 {
@@ -13,5 +9,12 @@ namespace SnippingTool
     /// </summary>
     public partial class App : Application
     {
+        public ISettingsManager SettingsManager { get; private set; }
+
+        //  Main entry point
+        private void Application_Startup(object sender, StartupEventArgs e)
+        {
+            SettingsManager = new SettingsManager(new SettingsRepository(new ConfigSettings()), new SettingsManagerHelper());
+        }
     }
 }

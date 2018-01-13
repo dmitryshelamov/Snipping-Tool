@@ -18,9 +18,9 @@ namespace SnippingTool.Models
         /// Get default file extensions
         /// </summary>
         /// <returns>Path to ""MMyPictures" folder</returns>
-        public string GetDefaultFileExtension()
+        public ImageExtensions GetDefaultFileExtension()
         {
-            return "jpg";
+            return ImageExtensions.Jpg;
         }
     }
 }

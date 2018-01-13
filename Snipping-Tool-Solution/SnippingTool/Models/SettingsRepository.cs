@@ -7,7 +7,7 @@ namespace SnippingTool.Models
 {
     public class SettingsRepository : ISettingsRepository
     {
-        private IConfigSettings _configSettings;
+        private readonly IConfigSettings _configSettings;
 
         public SettingsRepository(IConfigSettings configSettings)
         {
@@ -20,8 +20,7 @@ namespace SnippingTool.Models
         /// <param name="userSettings"></param>
         public void Save(UserSettings userSettings)
         {
-            string pathToConfigFile = Path.Combine(_configSettings.ConfigPath, _configSettings.XmlName);
-            using (FileStream fileStream = new FileStream(pathToConfigFile, FileMode.Create))
+            using (FileStream fileStream = new FileStream(_configSettings.ConfigPath, FileMode.Create))
             {
                 XmlSerializer serializer = new XmlSerializer(typeof(UserSettings));
                 serializer.Serialize(fileStream, userSettings);

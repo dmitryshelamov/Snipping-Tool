@@ -26,13 +26,13 @@ namespace SnippingTool.UnitTest.Models
         {
             //  arrange
             var saveDir = "TestSaveDirectory";
-            var imgExt = "TestImageExtensions";
+            var imgExt = ImageExtensions.Jpg;
             var settingsRepository = Substitute.For<ISettingsRepository>();
             var settingsHelper = Substitute.For<ISettingsManagerHelper>();
             settingsRepository.Load().Returns(new UserSettings()
             {
                 SaveDirectory = saveDir,
-                ImageExtentions = imgExt
+                ImageExtension = imgExt
             });
             //  act
             ISettingsManager settingsManager = new SettingsManager(settingsRepository, settingsHelper);
@@ -40,7 +40,7 @@ namespace SnippingTool.UnitTest.Models
             //  assert
             Assert.NotNull(settingsManager.UserSettings);
             Assert.AreEqual(settingsManager.UserSettings.SaveDirectory, saveDir);
-            Assert.AreEqual(settingsManager.UserSettings.ImageExtentions, imgExt);
+            Assert.AreEqual(settingsManager.UserSettings.ImageExtension, imgExt);
         }
 
         [Test]
@@ -48,7 +48,7 @@ namespace SnippingTool.UnitTest.Models
         {
             //  arrange
             var saveDir = "TestSaveDirectory";
-            var imgExt = "TestImageExtensions";
+            var imgExt = ImageExtensions.Jpg;
             var settingsRepository = Substitute.For<ISettingsRepository>();
             var settingsHelper = Substitute.For<ISettingsManagerHelper>();
             settingsHelper.GetDefaultSaveDirectory().Returns(saveDir);
@@ -60,7 +60,7 @@ namespace SnippingTool.UnitTest.Models
             //  assert
             Assert.NotNull(settingsManager.UserSettings);
             Assert.AreEqual(settingsManager.UserSettings.SaveDirectory, saveDir);
-            Assert.AreEqual(settingsManager.UserSettings.ImageExtentions, imgExt);
+            Assert.AreEqual(settingsManager.UserSettings.ImageExtension, imgExt);
         }
 
         [Test]
@@ -68,16 +68,16 @@ namespace SnippingTool.UnitTest.Models
         {
             //  arrange
             var saveDir = "TestSaveDirectory";
-            var imgExt = "TestImageExtensions";
+            var imgExt = ImageExtensions.Jpg;
             var settingsRepository = Substitute.For<ISettingsRepository>();
             var settingsHelper = Substitute.For<ISettingsManagerHelper>();
             //  act
             ISettingsManager settingsManager = new SettingsManager(settingsRepository, settingsHelper);
             settingsManager.UserSettings.SaveDirectory = saveDir;
-            settingsManager.UserSettings.ImageExtentions = imgExt;
+            settingsManager.UserSettings.ImageExtension = imgExt;
             settingsManager.SaveSettings();
             //  assert
-            settingsRepository.Received().Save(Arg.Is<UserSettings>(x => x.SaveDirectory == saveDir && x.ImageExtentions == imgExt));
+            settingsRepository.Received().Save(Arg.Is<UserSettings>(x => x.SaveDirectory == saveDir && x.ImageExtension == imgExt));
         }
 
         [Test]
@@ -85,7 +85,7 @@ namespace SnippingTool.UnitTest.Models
         {
             //  arrange
             var saveDir = "TestSaveDirectory";
-            var imgExt = "jpg";
+            var imgExt = ImageExtensions.Jpg;
             var settingsRepository = Substitute.For<ISettingsRepository>();
             var settingsHelper = Substitute.For<ISettingsManagerHelper>();
             settingsHelper.GetDefaultSaveDirectory().Returns(saveDir);
@@ -95,7 +95,7 @@ namespace SnippingTool.UnitTest.Models
             settingsManager.ResetSettings();
             //  assert
             Assert.AreEqual(saveDir, settingsManager.UserSettings.SaveDirectory);
-            Assert.AreEqual(imgExt, settingsManager.UserSettings.ImageExtentions);
+            Assert.AreEqual(imgExt, settingsManager.UserSettings.ImageExtension);
         }
     }
 }

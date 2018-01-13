@@ -16,12 +16,6 @@ namespace SnippingTool.Models
 
             UserSettings = new UserSettings();
             LoadSettings();
-
-            if (IsUserSettingsValid() == false)
-            {
-                ResetSettings();
-                SaveSettings();
-            }
         }
 
         /// <summary>
@@ -32,7 +26,7 @@ namespace SnippingTool.Models
             var settingsToSave = new UserSettings()
             {
                 SaveDirectory = UserSettings.SaveDirectory,
-                ImageExtentions = UserSettings.ImageExtentions
+                ImageExtension = UserSettings.ImageExtension
             };
             _settingsRepository.Save(settingsToSave);
         }
@@ -51,7 +45,7 @@ namespace SnippingTool.Models
             else
             {
                 UserSettings.SaveDirectory = settingsFromRepo.SaveDirectory;
-                UserSettings.ImageExtentions = settingsFromRepo.ImageExtentions;
+                UserSettings.ImageExtension = settingsFromRepo.ImageExtension;
             }
 
         }
@@ -64,20 +58,7 @@ namespace SnippingTool.Models
             if (UserSettings == null)
                 UserSettings = new UserSettings();
             UserSettings.SaveDirectory = _settingsManagerHelper.GetDefaultSaveDirectory();
-            UserSettings.ImageExtentions = _settingsManagerHelper.GetDefaultFileExtension();
-        }
-
-        /// <summary>
-        /// Check current user settings for null values
-        /// </summary>
-        /// <returns></returns>
-        private bool IsUserSettingsValid()
-        {
-            if (string.IsNullOrEmpty(UserSettings.SaveDirectory))
-                return false;
-            if (string.IsNullOrEmpty(UserSettings.ImageExtentions))
-                return false;
-            return true;
+            UserSettings.ImageExtension = _settingsManagerHelper.GetDefaultFileExtension();
         }
     }
 }

@@ -17,33 +17,38 @@ namespace SnippingTool.IntegrationTest
             //  arrange
             IConfigSettings configSettings = Substitute.For<IConfigSettings>();
             configSettings.XmlName.Returns("TestUserSettings.xml");
-            configSettings.ConfigPath.Returns(AppDomain.CurrentDomain.BaseDirectory);
+            var path = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, configSettings.XmlName);
+            configSettings.ConfigPath.Returns(path);
             UserSettings settings = new UserSettings()
             {
                 SaveDirectory = "TestSaveDirectory",
-                ImageExtentions = "TestExtenstions"
+                ImageExtension = ImageExtensions.Jpg
             };
 
             //  act
             SettingsRepository settingsRepository = new SettingsRepository(configSettings);
             settingsRepository.Save(settings);
 
-            XDocument xDoc = XDocument.Load(Path.Combine(configSettings.ConfigPath, configSettings.XmlName));
+            XDocument xDoc = XDocument.Load(configSettings.ConfigPath);
             UserSettings expectedSettings = new UserSettings()
             {
                 SaveDirectory = xDoc.Element("UserSettings").Element("SaveDirectory").Value,
-                ImageExtentions = xDoc.Element("UserSettings").Element("ImageExtentions").Value
+                ImageExtension = (ImageExtensions)Enum.Parse(typeof(ImageExtensions), xDoc.Element("UserSettings").Element("ImageExtension").Value)
             };
             //  assert
-            Assert.IsTrue(File.Exists(Path.Combine(configSettings.ConfigPath, configSettings.XmlName)));
+            Assert.IsTrue(File.Exists(configSettings.ConfigPath));
             Assert.AreEqual(expectedSettings.SaveDirectory, settings.SaveDirectory);
-            Assert.AreEqual(expectedSettings.ImageExtentions, settings.ImageExtentions);
+            Assert.AreEqual(expectedSettings.ImageExtension, settings.ImageExtension);
         }
 
         [Test]
         public void Load_LoadValidUserSettings_SettingsLoaded()
         {
             //  arrange
+            IConfigSettings configSettings = Substitute.For<IConfigSettings>();
+            configSettings.XmlName.Returns("TestUserSettings.xml");
+            var path = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, configSettings.XmlName);
+            configSettings.ConfigPath.Returns(path);
             var expectedSaveDirectory = "ExpectedSaveDirectory";
             var expectedImageExtentions = "ExpectedImageExtentions";
             var xml = "<?xml version=\"1.0\"?>" +
@@ -51,15 +56,13 @@ namespace SnippingTool.IntegrationTest
                        "<SaveDirectory>" + expectedSaveDirectory + "</SaveDirectory>" +
                        "<ImageExtentions>" + expectedImageExtentions + "</ImageExtentions>" +
                        "</UserSettings>";
-            string fileName = "UserSettings.xml";
-            string pathToConfigFile = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, fileName);
-            File.WriteAllText(pathToConfigFile, xml);
+            File.WriteAllText(configSettings.ConfigPath, xml);
             //  act
-            SettingsRepository settingsRepository = new SettingsRepository(new ConfigSettings());
+            SettingsRepository settingsRepository = new SettingsRepository(configSettings);
             UserSettings userSettings = settingsRepository.Load();
             //  assert
             Assert.AreEqual(expectedSaveDirectory, userSettings.SaveDirectory);
-            Assert.AreEqual(expectedImageExtentions, userSettings.ImageExtentions);
+            Assert.AreEqual(expectedImageExtentions, userSettings.ImageExtension);
         }
 
         [Test]
