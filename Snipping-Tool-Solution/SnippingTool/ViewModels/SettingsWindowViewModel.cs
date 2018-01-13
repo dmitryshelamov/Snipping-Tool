@@ -2,8 +2,8 @@
 using System.Windows;
 using GalaSoft.MvvmLight;
 using GalaSoft.MvvmLight.Command;
-using SnippingTool.Models;
-using SnippingTool.Models.Interfaces;
+using SnippingTool.Models.Settings;
+using SnippingTool.Models.Settings.Interfaces;
 
 namespace SnippingTool.ViewModels
 {

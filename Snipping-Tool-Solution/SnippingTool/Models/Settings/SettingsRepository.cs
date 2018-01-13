@@ -1,9 +1,8 @@
-﻿using System;
-using System.IO;
+﻿using System.IO;
 using System.Xml.Serialization;
-using SnippingTool.Models.Interfaces;
+using SnippingTool.Models.Settings.Interfaces;
 
-namespace SnippingTool.Models
+namespace SnippingTool.Models.Settings
 {
     public class SettingsRepository : ISettingsRepository
     {

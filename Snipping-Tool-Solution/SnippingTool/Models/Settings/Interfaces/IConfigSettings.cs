@@ -1,4 +1,4 @@
-﻿namespace SnippingTool.Models.Interfaces
+﻿namespace SnippingTool.Models.Settings.Interfaces
 {
     public interface IConfigSettings
     {

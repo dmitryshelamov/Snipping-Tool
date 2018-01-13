@@ -2,7 +2,7 @@
 using System.Runtime.CompilerServices;
 using SnippingTool.Annotations;
 
-namespace SnippingTool.Models
+namespace SnippingTool.Models.Settings
 {
     /// <summary>
     /// Represent a user settings

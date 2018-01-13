@@ -2,7 +2,8 @@
 using NSubstitute.ReturnsExtensions;
 using NUnit.Framework;
 using SnippingTool.Models;
-using SnippingTool.Models.Interfaces;
+using SnippingTool.Models.Settings;
+using SnippingTool.Models.Settings.Interfaces;
 
 namespace SnippingTool.UnitTest.Models
 {

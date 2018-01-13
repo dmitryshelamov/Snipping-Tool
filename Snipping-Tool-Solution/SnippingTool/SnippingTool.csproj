@@ -48,6 +48,7 @@
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />
+    <Reference Include="System.Drawing" />
     <Reference Include="System.Windows.Interactivity, Version=4.5.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\packages\MvvmLightLibs.5.3.0.0\lib\net45\System.Windows.Interactivity.dll</HintPath>
       <Private>True</Private>
@@ -70,7 +71,11 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Compile Include="Models\ImageExtensions.cs" />
+    <Compile Include="Models\Screenshots\Interfaces\IScreenshot.cs" />
+    <Compile Include="Models\Screenshots\Interfaces\IScreenshotHelper.cs" />
+    <Compile Include="Models\Screenshots\Screenshot.cs" />
+    <Compile Include="Models\Screenshots\ScreenshotHelper.cs" />
+    <Compile Include="Models\Settings\ImageExtensions.cs" />
     <Compile Include="Properties\Annotations.cs" />
     <Compile Include="ViewModels\MainWindowViewModel.cs" />
     <Compile Include="ViewModels\SettingsWindowViewModel.cs" />
@@ -85,8 +90,8 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="Models\ConfigSettings.cs" />
-    <Compile Include="Models\Interfaces\IConfigSettings.cs" />
+    <Compile Include="Models\Settings\ConfigSettings.cs" />
+    <Compile Include="Models\Settings\Interfaces\IConfigSettings.cs" />
     <Compile Include="View\MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
@@ -97,13 +102,13 @@
     </Page>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Models\Interfaces\ISettingsManager.cs" />
-    <Compile Include="Models\Interfaces\ISettingsManagerHelper.cs" />
-    <Compile Include="Models\Interfaces\ISettingsRepository.cs" />
-    <Compile Include="Models\SettingsManager.cs" />
-    <Compile Include="Models\SettingsManagerHelper.cs" />
-    <Compile Include="Models\SettingsRepository.cs" />
-    <Compile Include="Models\UserSettings.cs" />
+    <Compile Include="Models\Settings\Interfaces\ISettingsManager.cs" />
+    <Compile Include="Models\Settings\Interfaces\ISettingsManagerHelper.cs" />
+    <Compile Include="Models\Settings\Interfaces\ISettingsRepository.cs" />
+    <Compile Include="Models\Settings\SettingsManager.cs" />
+    <Compile Include="Models\Settings\SettingsManagerHelper.cs" />
+    <Compile Include="Models\Settings\SettingsRepository.cs" />
+    <Compile Include="Models\Settings\UserSettings.cs" />
     <Compile Include="Properties\AssemblyInfo.cs">
       <SubType>Code</SubType>
     </Compile>

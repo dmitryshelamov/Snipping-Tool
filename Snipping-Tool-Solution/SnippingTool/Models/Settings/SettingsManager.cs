@@ -1,6 +1,6 @@
-﻿using SnippingTool.Models.Interfaces;
+﻿using SnippingTool.Models.Settings.Interfaces;
 
-namespace SnippingTool.Models
+namespace SnippingTool.Models.Settings
 {
     public class SettingsManager : ISettingsManager
     {

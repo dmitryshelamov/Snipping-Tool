@@ -4,7 +4,8 @@ using System.Xml.Linq;
 using NSubstitute;
 using NUnit.Framework;
 using SnippingTool.Models;
-using SnippingTool.Models.Interfaces;
+using SnippingTool.Models.Settings;
+using SnippingTool.Models.Settings.Interfaces;
 
 namespace SnippingTool.IntegrationTest
 {

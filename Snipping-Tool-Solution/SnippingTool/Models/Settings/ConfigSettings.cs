@@ -1,8 +1,8 @@
 ﻿using System;
 using System.IO;
-using SnippingTool.Models.Interfaces;
+using SnippingTool.Models.Settings.Interfaces;
 
-namespace SnippingTool.Models
+namespace SnippingTool.Models.Settings
 {
     public class ConfigSettings : IConfigSettings
     {

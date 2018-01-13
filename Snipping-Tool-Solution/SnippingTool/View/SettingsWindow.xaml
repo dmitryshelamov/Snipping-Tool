@@ -7,6 +7,7 @@
         xmlns:viewModels="clr-namespace:SnippingTool.ViewModels"
         xmlns:sys="clr-namespace:System;assembly=mscorlib"
         xmlns:settings="clr-namespace:SnippingTool.Models"
+        xmlns:settings1="clr-namespace:SnippingTool.Models.Settings"
         mc:Ignorable="d"
         ResizeMode="NoResize"
         Width="320"
@@ -19,7 +20,7 @@
     <Window.Resources>
         <ObjectDataProvider x:Key="DataFromEnum" MethodName="GetValues" ObjectType="{x:Type sys:Enum}">
             <ObjectDataProvider.MethodParameters>
-                <x:Type TypeName="settings:ImageExtensions"/>
+                <x:Type TypeName="settings1:ImageExtensions"/>
             </ObjectDataProvider.MethodParameters>
         </ObjectDataProvider>
     </Window.Resources>

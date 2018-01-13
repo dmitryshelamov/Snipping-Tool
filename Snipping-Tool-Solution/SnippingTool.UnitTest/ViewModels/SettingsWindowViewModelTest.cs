@@ -1,7 +1,8 @@
 ﻿using NSubstitute;
 using NUnit.Framework;
 using SnippingTool.Models;
-using SnippingTool.Models.Interfaces;
+using SnippingTool.Models.Settings;
+using SnippingTool.Models.Settings.Interfaces;
 using SnippingTool.ViewModels;
 
 namespace SnippingTool.UnitTest.ViewModels
