@@ -22,7 +22,7 @@ namespace SnippingTool.IntegrationTest
             };
 
             //  act
-            SettingsRepository settingsRepository = new SettingsRepository();
+            SettingsRepository settingsRepository = new SettingsRepository(new ConfigSettings());
             settingsRepository.Save(settings);
 
             XDocument xDoc = XDocument.Load(pathToConfigFile);
@@ -52,7 +52,7 @@ namespace SnippingTool.IntegrationTest
             string pathToConfigFile = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, fileName);
             File.WriteAllText(pathToConfigFile, xml);
             //  act
-            SettingsRepository settingsRepository = new SettingsRepository();
+            SettingsRepository settingsRepository = new SettingsRepository(new ConfigSettings());
             UserSettings userSettings = settingsRepository.Load();
             //  assert
             Assert.AreEqual(expectedSaveDirectory, userSettings.SaveDirectory);

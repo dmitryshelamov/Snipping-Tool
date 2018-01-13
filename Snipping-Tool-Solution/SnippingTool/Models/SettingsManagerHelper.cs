@@ -13,5 +13,14 @@ namespace SnippingTool.Models
         {
             return Environment.GetFolderPath(Environment.SpecialFolder.MyPictures);
         }
+
+        /// <summary>
+        /// Get default file extensions
+        /// </summary>
+        /// <returns>Path to ""MMyPictures" folder</returns>
+        public string GetDefaultFileExtension()
+        {
+            return "jpg";
+        }
     }
 }

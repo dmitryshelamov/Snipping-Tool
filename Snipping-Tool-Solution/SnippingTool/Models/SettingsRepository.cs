@@ -1,5 +1,4 @@
-﻿using System;
-using System.IO;
+﻿using System.IO;
 using System.Xml.Serialization;
 using SnippingTool.Models.Interfaces;
 
@@ -34,6 +33,9 @@ namespace SnippingTool.Models
         public UserSettings Load()
         {
             UserSettings userSettings;
+            //  check if file exist
+            if (!File.Exists(_configSettings.ConfigPath))
+                return null;
             using (FileStream fileStream = new FileStream(_configSettings.ConfigPath, FileMode.Open))
             {
                 XmlSerializer deserializer = new XmlSerializer(typeof(UserSettings));

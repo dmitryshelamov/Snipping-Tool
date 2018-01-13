@@ -3,5 +3,6 @@
     public interface ISettingsManagerHelper
     {
         string GetDefaultSaveDirectory();
+        string GetDefaultFileExtension();
     }
 }

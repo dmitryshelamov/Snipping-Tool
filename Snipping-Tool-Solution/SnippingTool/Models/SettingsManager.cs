@@ -43,8 +43,17 @@ namespace SnippingTool.Models
         public void LoadSettings()
         {
             var settingsFromRepo = _settingsRepository.Load();
-            UserSettings.SaveDirectory = settingsFromRepo.SaveDirectory;
-            UserSettings.ImageExtentions = settingsFromRepo.ImageExtentions;
+            if (settingsFromRepo == null)
+            {
+                ResetSettings();
+                SaveSettings();
+            }
+            else
+            {
+                UserSettings.SaveDirectory = settingsFromRepo.SaveDirectory;
+                UserSettings.ImageExtentions = settingsFromRepo.ImageExtentions;
+            }
+
         }
 
         /// <summary>
@@ -55,7 +64,7 @@ namespace SnippingTool.Models
             if (UserSettings == null)
                 UserSettings = new UserSettings();
             UserSettings.SaveDirectory = _settingsManagerHelper.GetDefaultSaveDirectory();
-            UserSettings.ImageExtentions = "jpg";
+            UserSettings.ImageExtentions = _settingsManagerHelper.GetDefaultFileExtension();
         }
 
         /// <summary>

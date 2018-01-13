@@ -1,4 +1,5 @@
 ﻿using NSubstitute;
+using NSubstitute.ReturnsExtensions;
 using NUnit.Framework;
 using SnippingTool.Models;
 using SnippingTool.Models.Interfaces;
@@ -21,7 +22,7 @@ namespace SnippingTool.UnitTest.Models
         }
 
         [Test]
-        public void LoadSettings_CallMethod_UserSettingsHaveValues()
+        public void LoadSettings_SettingsRepositoryReturnValidSettings_UserSettingsHaveValues()
         {
             //  arrange
             var saveDir = "TestSaveDirectory";
@@ -33,6 +34,26 @@ namespace SnippingTool.UnitTest.Models
                 SaveDirectory = saveDir,
                 ImageExtentions = imgExt
             });
+            //  act
+            ISettingsManager settingsManager = new SettingsManager(settingsRepository, settingsHelper);
+            settingsManager.LoadSettings();
+            //  assert
+            Assert.NotNull(settingsManager.UserSettings);
+            Assert.AreEqual(settingsManager.UserSettings.SaveDirectory, saveDir);
+            Assert.AreEqual(settingsManager.UserSettings.ImageExtentions, imgExt);
+        }
+
+        [Test]
+        public void LoadSettings_SettingsRepositoryReturnNull_ShouldResetSettings()
+        {
+            //  arrange
+            var saveDir = "TestSaveDirectory";
+            var imgExt = "TestImageExtensions";
+            var settingsRepository = Substitute.For<ISettingsRepository>();
+            var settingsHelper = Substitute.For<ISettingsManagerHelper>();
+            settingsHelper.GetDefaultSaveDirectory().Returns(saveDir);
+            settingsHelper.GetDefaultFileExtension().Returns(imgExt);
+            settingsRepository.Load().ReturnsNull();
             //  act
             ISettingsManager settingsManager = new SettingsManager(settingsRepository, settingsHelper);
             settingsManager.LoadSettings();
@@ -55,7 +76,7 @@ namespace SnippingTool.UnitTest.Models
             settingsManager.UserSettings.SaveDirectory = saveDir;
             settingsManager.UserSettings.ImageExtentions = imgExt;
             settingsManager.SaveSettings();
-            //  arrange
+            //  assert
             settingsRepository.Received().Save(Arg.Is<UserSettings>(x => x.SaveDirectory == saveDir && x.ImageExtentions == imgExt));
         }
 
